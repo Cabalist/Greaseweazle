@@ -1,6 +1,6 @@
 
 export FW_MAJOR := 0
-export FW_MINOR := 21
+export FW_MINOR := 100
 
 TARGETS := all blinky clean dist windist mrproper ocd flash start serial
 .PHONY: $(TARGETS)
@@ -66,7 +66,8 @@ dist:
 
 windist:
 	rm -rf $(PROJ)-* ipf ipf.zip
-	wget https://github.com/keirf/Greaseweazle/releases/download/$(VER)/$(PROJ)-$(VER).zip
+	cp ../Downloads/$(PROJ)-$(VER).zip .
+#	wget https://github.com/keirf/Greaseweazle/releases/download/$(VER)/$(PROJ)-$(VER).zip
 	$(UNZIP) $(PROJ)-$(VER).zip
 	cp -a scripts/setup.py $(PROJ)-$(VER)/scripts
 	cd $(PROJ)-$(VER)/scripts && $(PYTHON) setup.py build
